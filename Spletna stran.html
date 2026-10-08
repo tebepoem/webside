@@ -1,0 +1,854 @@
+<!doctype html>
+<html lang="sl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Salon lepote in zdravja Breda Batagelj</title>
+
+<style>
+:root{
+--g1:#687f32;
+--g2:#93a94d;
+--g3:#dce9b5;
+--cream:#f7f5e9;
+--ink:#293025;
+--white:#fff;
+--line:#d3ddbb
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+
+body{
+margin:0;
+font-family:Arial,Helvetica,sans-serif;
+background:var(--cream);
+color:var(--ink);
+line-height:1.65
+}
+
+.root{
+min-height:100vh;
+background:var(--cream)
+}
+
+.lang{
+position:fixed;
+right:20px;
+top:18px;
+z-index:10;
+display:flex;
+gap:6px
+}
+
+.lang button{
+border:1px solid var(--line);
+background:#fff;
+border-radius:20px;
+padding:7px 10px;
+cursor:pointer;
+font-size:15px
+}
+
+.lang button.active{
+background:var(--g1);
+color:#fff
+}
+
+header{
+min-height:92vh;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:100px 24px 70px;
+position:relative;
+overflow:hidden;
+background:linear-gradient(
+135deg,
+#eef1df 0%,
+#f8f6ed 55%,
+#dce6bb 100%
+)
+}
+
+.ginkgo{
+position:absolute;
+opacity:.28;
+fill:var(--g1)
+}
+
+.g1{
+width:310px;
+left:-35px;
+top:70px;
+transform:rotate(-18deg)
+}
+
+.g2{
+width:360px;
+right:-55px;
+bottom:10px;
+transform:rotate(24deg)
+}
+
+.g3{
+width:190px;
+right:18%;
+top:14%;
+transform:rotate(10deg);
+opacity:.15
+}
+
+.ginkgo-img{
+position:absolute;
+width:210px;
+height:210px;
+object-fit:contain;
+opacity:.78;
+z-index:0
+}
+
+.ginkgo-img.top{
+left:-45px;
+top:-45px
+}
+
+.ginkgo-img.bottom-right{
+right:-45px;
+bottom:-45px
+}
+
+.ginkgo-img-wrap{
+position:absolute;
+inset:0;
+pointer-events:none;
+background:
+radial-gradient(
+circle at 0 0,
+rgba(255,255,255,.98) 0,
+rgba(255,255,255,.98) 90px,
+rgba(255,255,255,.65) 145px,
+rgba(255,255,255,0) 230px
+),
+radial-gradient(
+circle at 100% 100%,
+rgba(255,255,255,.98) 0,
+rgba(255,255,255,.98) 90px,
+rgba(255,255,255,.65) 145px,
+rgba(255,255,255,0) 230px
+)
+}
+
+.hero{
+max-width:900px;
+position:relative
+}
+
+.eyebrow{
+letter-spacing:4px;
+text-transform:uppercase;
+color:var(--g1);
+font-size:13px;
+font-weight:700
+}
+
+.hero h1{
+font-family:Georgia,serif;
+font-size:clamp(42px,7vw,82px);
+line-height:1.05;
+margin:16px 0;
+color:#405021;
+font-weight:500
+}
+
+.hero p{
+font-size:19px;
+max-width:650px;
+margin:0 auto 28px;
+color:#59614f
+}
+
+.cta{
+display:inline-block;
+background:var(--g1);
+color:#fff;
+text-decoration:none;
+padding:13px 24px;
+border-radius:28px;
+font-weight:700
+}
+
+nav{
+position:sticky;
+top:0;
+z-index:9;
+background:rgba(255,255,255,.94);
+border-bottom:1px solid var(--line);
+backdrop-filter:blur(8px)
+}
+
+nav .inner{
+max-width:1100px;
+margin:auto;
+display:flex;
+justify-content:center;
+gap:7px;
+flex-wrap:wrap;
+padding:10px 18px
+}
+
+nav a{
+color:var(--ink);
+text-decoration:none;
+padding:9px 13px;
+border-radius:18px;
+font-size:14px
+}
+
+nav a:hover{
+background:var(--g3);
+color:#405021
+}
+
+section{
+max-width:1050px;
+margin:auto;
+padding:90px 24px
+}
+
+.section-title{
+font-family:Georgia,serif;
+color:#405021;
+font-size:42px;
+font-weight:500;
+margin:0 0 28px
+}
+
+.about{
+font-size:17px;
+max-width:850px
+}
+
+.about p{
+margin:0 0 18px
+}
+
+.leaf-line{
+height:2px;
+background:linear-gradient(90deg,var(--g1),transparent);
+margin:35px 0;
+width:180px
+}
+
+.services{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:18px
+}
+
+.card{
+background:#fff;
+border:1px solid var(--line);
+border-radius:20px;
+padding:28px;
+box-shadow:0 8px 25px rgba(55,70,35,.06);
+position:relative;
+overflow:hidden
+}
+
+.card:after{
+content:"";
+position:absolute;
+width:70px;
+height:70px;
+border-radius:50%;
+right:-25px;
+top:-25px;
+background:var(--g3)
+}
+
+.num{
+color:var(--g1);
+font-size:13px;
+font-weight:800;
+letter-spacing:2px
+}
+
+.card h3{
+font-family:Georgia,serif;
+font-size:25px;
+color:#405021;
+margin:8px 0
+}
+
+.card p{
+margin:0;
+color:#60685a
+}
+
+.empty{
+min-height:300px;
+display:flex;
+align-items:center;
+justify-content:center;
+color:#7b846d;
+text-align:center;
+font-family:Georgia,serif;
+font-size:25px
+}
+
+.contact{
+background:#e5eacf;
+border-top:1px solid var(--line);
+max-width:none
+}
+
+.contact-inner{
+max-width:1050px;
+margin:auto;
+padding:80px 24px
+}
+
+.contact-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:35px
+}
+
+.contact-box{
+background:#fff;
+padding:28px;
+border-radius:20px;
+border:1px solid var(--line)
+}
+
+.contact-box h3{
+margin-top:0;
+color:#405021;
+font-family:Georgia,serif
+}
+
+.contact a{
+color:#536a27
+}
+
+.map{
+display:inline-block;
+margin-top:15px;
+padding:10px 17px;
+border:1px solid var(--g1);
+border-radius:20px;
+text-decoration:none;
+color:#405021
+}
+
+footer{
+text-align:center;
+padding:28px;
+background:#3e4b25;
+color:#e9edda;
+font-size:14px
+}
+
+@media(max-width:700px){
+
+.lang{
+right:10px;
+top:10px
+}
+
+.lang button{
+padding:6px 8px
+}
+
+.contact-grid{
+grid-template-columns:1fr
+}
+
+.hero h1{
+font-size:45px
+}
+
+section{
+padding:65px 20px
+}
+
+}
+</style>
+</head>
+
+<body>
+
+<div class="root">
+
+<div class="lang">
+<button class="active" data-lang="sl">🇸🇮</button>
+<button data-lang="en">🇬🇧</button>
+<button data-lang="it">🇮🇹</button>
+<button data-lang="de">🇩🇪</button>
+</div>
+
+<header>
+
+<div class="ginkgo-img-wrap" aria-hidden="true"></div>
+
+<img class="ginkgo-img top" src="ginko.jpg" alt="">
+<img class="ginkgo-img bottom-right" src="ginko.jpg" alt="">
+
+<div class="hero">
+
+<div class="eyebrow">Breda Batagelj</div>
+
+<h1>Salon lepote in zdravja</h1>
+
+<p data-i18n="heroText">
+Strokovna, varna in premišljena nega kože v prostoru miru,
+zaupanja in strokovne oskrbe.
+</p>
+
+<a class="cta" data-i18n="heroButton" href="#storitve">
+Oglejte si storitve
+</a>
+
+</div>
+
+</header>
+
+<nav>
+
+<div class="inner">
+
+<a data-i18n="navAbout" href="#o-salonu">
+O salonu
+</a>
+
+<a data-i18n="navServices" href="#storitve">
+Storitve
+</a>
+
+<a data-i18n="navLymph" href="#limfna">
+Limfna drenaža po dr. Voddru
+</a>
+
+<a data-i18n="navContact" href="#kontakt">
+Kontakt
+</a>
+
+</div>
+
+</nav>
+
+<main>
+
+<section id="o-salonu">
+
+<h2 class="section-title" data-i18n="aboutTitle">
+O salonu
+</h2>
+
+<div class="leaf-line"></div>
+
+<div class="about">
+
+<p>
+V Salonu lepote in zdravja Breda Batagelj verjamemo, da koža ni le nekaj,
+kar vidimo v ogledalu. Kožo obravnavamo kot to, kar v resnici je:
+največji organ našega telesa, zaščitna plast med nami in svetom ter
+odraz našega notranjega ravnovesja.
+</p>
+
+<p>
+Skrb za kožo ni le razvajanje ali estetika. Je oblika higiene, zdravja
+in spoštovanja lastnega telesa, podobno kot skrb za ustno votlino ali
+splošno dobro počutje. Naše poslanstvo je nuditi strokovno, varno in
+premišljeno nego kože, ki podpira njeno naravno funkcijo, odpornost in
+dolgoročno zdravje. Vsaka obravnava temelji na znanju, izkušnjah in
+razumevanju kože kot živega, občutljivega sistema.
+</p>
+
+<p>
+Naša nega temelji na znanju, potrpežljivosti in zaščiti.
+Za kožo, ki ostaja zdrava skozi čas, ne le lepo videti za trenutek.
+</p>
+
+<p>
+V salonu ustvarjamo prostor miru, zaupanja in strokovne oskrbe,
+kjer se vsaka oseba počuti slišano, varno in podprto na poti do
+bolj uravnotežene kože.
+</p>
+
+<p>
+<strong>Naslov:</strong>
+Goriška cesta 29 E, 5270 Ajdovščina
+</p>
+
+</div>
+
+</section>
+
+
+<section id="storitve">
+
+<h2 class="section-title" data-i18n="servicesTitle">
+Storitve
+</h2>
+
+<div class="leaf-line"></div>
+
+<div class="services">
+
+<div class="card">
+<span class="num">01</span>
+<h3 data-i18n="s1Title">Nega obraza</h3>
+<p data-i18n="s1Text">
+Nega obraza s profesionalnimi izdelki Dermalogica.
+</p>
+</div>
+
+
+<div class="card">
+<span class="num">02</span>
+<h3 data-i18n="s2Title">
+Limfna drenaža po dr. Voddru
+</h3>
+<p data-i18n="s2Text">
+Limfna drenaža po dr. Voddru je nežna, natančna in strokovno vodena
+manualna tehnika, ki s specifičnimi gibi spodbuja naravni pretok limfe
+v telesu.
+</p>
+</div>
+
+
+<div class="card">
+<span class="num">03</span>
+<h3 data-i18n="s3Title">Depilacija</h3>
+<p data-i18n="s3Text">
+Depilacija obraza, nog, hrbta in drugih predelov.
+</p>
+</div>
+
+
+<div class="card">
+<span class="num">04</span>
+<h3 data-i18n="s4Title">Manikura</h3>
+<p data-i18n="s4Text">
+Nega rok, nohtov in dekoracija nohtov za urejen videz.
+</p>
+</div>
+
+
+<div class="card">
+<span class="num">05</span>
+<h3 data-i18n="s5Title">Pedikura</h3>
+<p data-i18n="s5Text2">
+Specialna nega za občutljivo kožo, močni nohti,
+mehka stopala in občutek svežine.
+</p>
+</div>
+
+
+<div class="card">
+<span class="num">06</span>
+<h3 data-i18n="s6Title">
+Lepota in ličenje
+</h3>
+<p data-i18n="s6Text">
+Ličenje za posebne priložnosti.
+</p>
+</div>
+
+</div>
+
+</section>
+
+
+<section id="limfna">
+
+<h2 class="section-title" data-i18n="lymphTitle">
+Limfna drenaža po dr. Voddru
+</h2>
+
+<div class="empty">
+
+<img
+src="Potrdilo.jpg"
+alt="Potrdilo za limfno drenažo po dr. Voddru"
+style="max-width:600px;width:100%;height:auto;display:block;"
+>
+
+</div>
+
+</section>
+
+
+<section id="kontakt" class="contact">
+
+<div class="contact-inner">
+
+<h2 class="section-title" data-i18n="contactTitle">
+Kontakt
+</h2>
+
+<div class="contact-grid">
+
+<div class="contact-box">
+
+<h3>
+Salon lepote in zdravja Breda Batagelj s.p.
+</h3>
+
+<p>
+Goriška cesta 29 E<br>
+5270 Ajdovščina
+</p>
+
+<p>
+☎ 05 368 13 77<br>
+📱 041 714 049
+</p>
+
+<p>
+✉
+<a href="mailto:salonlepoteinzdravja@gmail.com">
+salonlepoteinzdravja@gmail.com
+</a>
+</p>
+
+</div>
+
+
+<div class="contact-box">
+
+<h3 data-i18n="hoursTitle">
+Odpiralni čas
+</h3>
+
+<p>
+<strong data-i18n="hoursText">
+Pon–pet po predhodnem dogovoru.
+</strong>
+</p>
+
+<a
+class="map"
+data-i18n="mapButton"
+href="https://www.google.com/maps/search/?api=1&query=Goriška+cesta+29E,+Ajdovščina"
+target="_blank">
+Odpri lokacijo na zemljevidu
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+</main>
+
+<footer>
+Salon lepote in zdravja Breda Batagelj s.p. · Ajdovščina
+</footer>
+
+</div>
+
+
+<script>
+
+const translations={
+
+sl:{
+heroText:"Strokovna, varna in premišljena nega kože v prostoru miru, zaupanja in strokovne oskrbe.",
+heroButton:"Oglejte si storitve",
+navAbout:"O salonu",
+navServices:"Storitve",
+navLymph:"Limfna drenaža po dr. Voddru",
+navContact:"Kontakt",
+aboutTitle:"O salonu",
+servicesTitle:"Storitve",
+
+s1Title:"Nega obraza",
+s1Text:"Nega obraza s profesionalnimi izdelki Dermalogica.",
+
+s2Title:"Limfna drenaža po dr. Voddru",
+s2Text:"Limfna drenaža po dr. Voddru je nežna, natančna in strokovno vodena manualna tehnika, ki s specifičnimi gibi spodbuja naravni pretok limfe v telesu.",
+
+s3Title:"Depilacija",
+s3Text:"Depilacija obraza, nog, hrbta in drugih predelov.",
+
+s4Title:"Manikura",
+s4Text:"Nega rok, nohtov in dekoracija nohtov za urejen videz.",
+
+s5Title:"Pedikura",
+s5Text2:"Specialna nega za občutljivo kožo, močni nohti, mehka stopala in občutek svežine.",
+
+s6Title:"Lepota in ličenje",
+s6Text:"Ličenje za posebne priložnosti.",
+
+lymphTitle:"Limfna drenaža po dr. Voddru",
+contactTitle:"Kontakt",
+hoursTitle:"Odpiralni čas",
+hoursText:"Pon–pet po predhodnem dogovoru.",
+mapButton:"Odpri lokacijo na zemljevidu"
+},
+
+en:{
+heroText:"Professional, safe and thoughtful skincare in a space of peace, trust and professional care.",
+heroButton:"View services",
+navAbout:"About the salon",
+navServices:"Services",
+navLymph:"Dr. Vodder Manual Lymph Drainage",
+navContact:"Contact",
+aboutTitle:"About the salon",
+servicesTitle:"Services",
+
+s1Title:"Facial care",
+s1Text:"Facial care with professional Dermalogica products.",
+
+s2Title:"Dr. Vodder Manual Lymph Drainage",
+s2Text:"Dr. Vodder Manual Lymph Drainage is a gentle, precise and professionally guided manual technique that uses specific movements to support the natural flow of lymph in the body.",
+
+s3Title:"Depilation",
+s3Text:"Depilation of the face, legs, back and other areas.",
+
+s4Title:"Manicure",
+s4Text:"Care for hands and nails, including nail decoration for a polished appearance.",
+
+s5Title:"Pedicure",
+s5Text2:"Special care for sensitive skin, strong nails, soft feet and a feeling of freshness.",
+
+s6Title:"Beauty and makeup",
+s6Text:"Makeup for special occasions.",
+
+lymphTitle:"Dr. Vodder Manual Lymph Drainage",
+contactTitle:"Contact",
+hoursTitle:"Opening hours",
+hoursText:"Mon–Fri by prior appointment.",
+mapButton:"Open location on map"
+},
+
+it:{
+heroText:"Cura della pelle professionale, sicura e attenta in uno spazio di tranquillità, fiducia e assistenza professionale.",
+heroButton:"Scopri i servizi",
+navAbout:"Il salone",
+navServices:"Servizi",
+navLymph:"Drenaggio linfatico secondo il Dr. Vodder",
+navContact:"Contatti",
+aboutTitle:"Il salone",
+servicesTitle:"Servizi",
+
+s1Title:"Cura del viso",
+s1Text:"Cura del viso con prodotti professionali Dermalogica.",
+
+s2Title:"Drenaggio linfatico secondo il Dr. Vodder",
+s2Text:"Il drenaggio linfatico secondo il Dr. Vodder è una tecnica manuale delicata, precisa e professionale che, attraverso movimenti specifici, favorisce il naturale flusso della linfa nel corpo.",
+
+s3Title:"Depilazione",
+s3Text:"Depilazione del viso, delle gambe, della schiena e di altre zone.",
+
+s4Title:"Manicure",
+s4Text:"Cura delle mani e delle unghie e decorazione delle unghie per un aspetto curato.",
+
+s5Title:"Pedicure",
+s5Text2:"Cura speciale per la pelle sensibile, unghie forti, piedi morbidi e una sensazione di freschezza.",
+
+s6Title:"Bellezza e trucco",
+s6Text:"Trucco per occasioni speciali.",
+
+lymphTitle:"Drenaggio linfatico secondo il Dr. Vodder",
+contactTitle:"Contatti",
+hoursTitle:"Orari",
+hoursText:"Lun–Ven su appuntamento.",
+mapButton:"Apri la posizione sulla mappa"
+},
+
+de:{
+heroText:"Professionelle, sichere und sorgfältige Hautpflege in einem Raum der Ruhe, des Vertrauens und der fachlichen Betreuung.",
+heroButton:"Leistungen ansehen",
+navAbout:"Über den Salon",
+navServices:"Leistungen",
+navLymph:"Manuelle Lymphdrainage nach Dr. Vodder",
+navContact:"Kontakt",
+aboutTitle:"Über den Salon",
+servicesTitle:"Leistungen",
+
+s1Title:"Gesichtspflege",
+s1Text:"Gesichtspflege mit professionellen Dermalogica-Produkten.",
+
+s2Title:"Manuelle Lymphdrainage nach Dr. Vodder",
+s2Text:"Die manuelle Lymphdrainage nach Dr. Vodder ist eine sanfte, präzise und fachlich geführte manuelle Technik, die mit speziellen Bewegungen den natürlichen Lymphfluss im Körper unterstützt.",
+
+s3Title:"Depilation",
+s3Text:"Depilation von Gesicht, Beinen, Rücken und anderen Körperbereichen.",
+
+s4Title:"Maniküre",
+s4Text:"Pflege von Händen und Nägeln sowie Nageldekoration für ein gepflegtes Erscheinungsbild.",
+
+s5Title:"Pediküre",
+s5Text2:"Spezielle Pflege für empfindliche Haut, kräftige Nägel, weiche Füße und ein frisches Gefühl.",
+
+s6Title:"Schönheit und Make-up",
+s6Text:"Make-up für besondere Anlässe.",
+
+lymphTitle:"Manuelle Lymphdrainage nach Dr. Vodder",
+contactTitle:"Kontakt",
+hoursTitle:"Öffnungszeiten",
+hoursText:"Mo–Fr nach vorheriger Vereinbarung.",
+mapButton:"Standort auf der Karte öffnen"
+}
+
+};
+
+
+function setLanguage(lang){
+
+document
+.querySelectorAll("[data-i18n]")
+.forEach(el=>{
+
+const key=el.dataset.i18n;
+
+if(translations[lang][key])
+el.textContent=translations[lang][key];
+
+});
+
+document
+.querySelectorAll(".lang button")
+.forEach(b=>
+b.classList.toggle(
+"active",
+b.dataset.lang===lang
+)
+);
+
+document.documentElement.lang=lang;
+
+localStorage.setItem(
+"breda-language",
+lang
+);
+
+}
+
+
+document
+.querySelectorAll(".lang button")
+.forEach(button=>
+button.addEventListener(
+"click",
+()=>setLanguage(button.dataset.lang)
+)
+);
+
+
+setLanguage(
+localStorage.getItem("breda-language")||"sl"
+);
+
+</script>
+
+</body>
+</html>
